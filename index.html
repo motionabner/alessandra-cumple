@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFBF8">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cumpleaños de Alessandra">
+<meta property="og:description" content="¡Alessandra cumple 2 años! Sábado 12 de diciembre, 10:00 AM, GoEnjoy - Jockey Plaza. Abre tu invitación y confirma asistencia.">
+<meta property="og:image" content="https://motionabner.github.io/alessandra-cumple/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://motionabner.github.io/alessandra-cumple/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='45' r='34' fill='%23EB6F78'/%3E%3C/svg%3E">
+<title>Cumple de Alessandra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap">
+<style>
+  /* Layout: una sola columna tipo tarjeta (como la referencia), portada de globos que se revientan para abrirla */
+  :root {
+    --cream: #FFFBF8;
+    --pink: #F4A6B8;
+    --pink-deep: #D9708F;
+    --blue: #A9C8EE;
+    --lilac: #C9B8E8;
+    --ink: #6B6670;
+    --ink-soft: #8D8794;
+    --line: #D8D3DB;
+    --f-script: "Great Vibes", "Snell Roundhand", cursive;
+    --f-caps: "Cormorant SC", "Cormorant Garamond", Georgia, serif;
+    --f-body: "Cormorant Garamond", Georgia, serif;
+    color-scheme: light;
+  }
+  :root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { background: var(--cream); overflow-x: clip; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 20px;
+    line-height: 1.45;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    overflow-x: clip;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--pink-deep); outline-offset: 3px; border-radius: 6px; }
+
+  .gingham {
+    position: absolute; width: 190px; height: 190px; pointer-events: none;
+    background-image:
+      linear-gradient(90deg, rgba(244,166,184,.30) 50%, transparent 50%),
+      linear-gradient(rgba(244,166,184,.30) 50%, transparent 50%);
+    background-size: 30px 30px;
+    -webkit-mask-image: radial-gradient(circle at var(--mx) var(--my), #000 0%, transparent 72%);
+            mask-image: radial-gradient(circle at var(--mx) var(--my), #000 0%, transparent 72%);
+  }
+  .gingham.tl { top: 0; left: 0; --mx: 0%; --my: 0%; }
+  .gingham.br { bottom: 0; right: 0; --mx: 100%; --my: 100%; }
+
+  .deco { position: absolute; pointer-events: none; }
+  .float { animation: bob 5s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateY(0) rotate(-1.5deg); } 50% { transform: translateY(-12px) rotate(1.5deg); } }
+  .drift { animation: drift 14s ease-in-out infinite alternate; }
+  @keyframes drift { from { transform: translateX(-8px); } to { transform: translateX(10px); } }
+  .twinkle { animation: tw 2.6s ease-in-out infinite; }
+  @keyframes tw { 0%,100% { opacity: .35; transform: scale(.8); } 50% { opacity: 1; transform: scale(1.1); } }
+
+  /* ---------- Portada ---------- */
+  .cover {
+    position: relative; min-height: 100svh; max-width: 460px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 6px; padding-block: 48px 40px; transition: opacity .6s, transform .6s;
+  }
+  .cover.out { opacity: 0; transform: scale(1.04); pointer-events: none; }
+  .cover .eyebrow { font-family: var(--f-caps); letter-spacing: .22em; font-size: 15px; color: var(--ink-soft); margin: 0; position: relative; }
+  .cover h1 { font-family: var(--f-script); font-weight: 400; font-size: clamp(3.4rem, 17vw, 5rem); color: var(--pink); margin: 0; line-height: 1.05; position: relative; }
+  .cover .hint { font-family: var(--f-caps); letter-spacing: .12em; font-size: 17px; margin: 0; position: relative; min-height: 1.5em; }
+  .balloons { position: relative; width: 100%; height: 300px; margin-block: 10px; }
+  .balloon { position: absolute; background: none; border: 0; padding: 0; cursor: pointer; width: 96px; touch-action: manipulation; animation: bob 4.6s ease-in-out infinite; transition: transform .15s; }
+  .balloon svg { width: 100%; height: auto; display: block; overflow: visible; }
+  .balloon:active { transform: scale(.94); }
+  .balloon.b1 { left: 14%; top: 50px; width: 112px; animation-delay: -1s; }
+  .balloon.b2 { right: 14%; top: 10px; width: 112px; animation-delay: -2.8s; }
+  .balloon.pop { animation: none; transform: scale(1.35); opacity: 0; transition: transform .22s ease-out, opacity .22s; pointer-events: none; }
+  .skip { background: none; border: 0; text-decoration: underline; text-underline-offset: 4px; color: var(--ink-soft); font-size: 16px; cursor: pointer; padding: 10px; position: relative; }
+
+  /* ---------- Invitación ---------- */
+  .invite { position: relative; max-width: 460px; margin: 0 auto; padding-block: 36px 56px; text-align: center; animation: rise .8s ease-out both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  .invite > :not(.deco):not(.gingham) { position: relative; }
+  .arc { width: 100%; max-width: 360px; height: auto; display: block; margin: 0 auto -6px; overflow: visible; }
+  .arc text { font-family: var(--f-caps); font-size: 25px; letter-spacing: .14em; fill: var(--ink-soft); }
+  .name { font-family: var(--f-script); font-weight: 400; font-size: clamp(3.6rem, 18vw, 5.4rem); color: var(--pink); line-height: 1; margin: 0; text-wrap: balance; }
+  .pair-wrap { position: relative; width: min(100%, 380px); margin: 6px auto 0; }
+  .pair { display: block; cursor: pointer; animation: hop 2.4s ease-in-out infinite; transform-origin: 50% 100%; }
+  .pair img { display: block; width: 100%; height: auto; mix-blend-mode: multiply; -webkit-user-select: none; user-select: none;
+    -webkit-mask-image: radial-gradient(ellipse 64% 62% at 50% 52%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 64% 62% at 50% 52%, #000 62%, transparent 100%); }
+  @keyframes hop { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-9px) rotate(-.8deg); } }
+  .pair.jump { animation: jump .6s ease-out; }
+  @keyframes jump { 0% { transform: scale(1,1); } 25% { transform: scale(1.06,.94); } 55% { transform: translateY(-30px) scale(.97,1.05); } 100% { transform: none; } }
+  .bubble { position: absolute; top: -4px; background: #fff; border: 2px solid var(--blue); color: var(--ink); font-family: var(--f-caps); font-weight: 600; letter-spacing: .06em; font-size: 17px; padding: 6px 14px; border-radius: 18px; opacity: 0; transform: translateY(8px) scale(.9); transition: .25s; pointer-events: none; white-space: nowrap; }
+  .bubble.show { opacity: 1; transform: none; }
+  .bubble.l { left: 4%; } .bubble.r { right: 4%; }
+  .tap-tip { font-size: 15px; color: var(--ink-soft); font-style: italic; margin: 2px 0 0; }
+
+  .big-caps { font-family: var(--f-caps); font-weight: 500; letter-spacing: .12em; font-size: clamp(1.7rem, 8vw, 2.2rem); margin: 22px 0 14px; color: var(--ink); }
+
+  .when { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin: 0 auto; max-width: 420px; }
+  .when .side { font-family: var(--f-caps); font-weight: 500; font-size: 1.25rem; letter-spacing: .04em; padding-block: 8px; border-block: 1px solid var(--line); }
+  .when .mid { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+  .when .month { font-family: var(--f-caps); letter-spacing: .16em; font-size: 1.15rem; }
+  .when .day { font-family: var(--f-caps); font-weight: 600; font-size: 3.6rem; color: var(--pink-deep); }
+
+  .where { margin: 26px 0 0; font-family: var(--f-caps); font-weight: 500; letter-spacing: .1em; }
+  .where .venue { font-size: 1.9rem; color: var(--ink); display: block; }
+  .where .place { font-size: 1.25rem; color: var(--ink-soft); display: block; }
+
+  .punctual { margin: 30px auto 0; max-width: 400px; background: rgba(255,255,255,.85); border: 1.5px solid #E8DDF3; border-radius: 22px; padding: 20px 18px 18px; box-shadow: 0 10px 30px -18px rgba(150,120,190,.55); }
+  .punctual h2 { font-family: var(--f-caps); letter-spacing: .1em; font-size: 1.5rem; margin: 0 0 6px; color: var(--pink-deep); font-weight: 600; }
+  .punctual p { margin: 0; font-size: 1.15rem; }
+  .bar-wrap { position: relative; padding-bottom: 28px; }
+  .track { display: flex; height: 22px; border-radius: 999px; overflow: hidden; background: #EFE6F8; border: 1px solid #E1D3F1; }
+  .missed { width: 0; background: repeating-linear-gradient(45deg, #F8D6DF, #F8D6DF 6px, #FBE7EC 6px, #FBE7EC 12px); transition: width .35s cubic-bezier(.2,.8,.2,1); }
+  .play { flex: 1; background: linear-gradient(90deg, var(--blue), var(--lilac)); }
+  .tick { position: absolute; top: 28px; transform: translateX(-50%); font-size: 13px; font-family: var(--f-caps); letter-spacing: .06em; color: var(--ink-soft); }
+  .tick:first-of-type { transform: none; } .tick.end { transform: translateX(-100%); }
+  .ask { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--f-caps); letter-spacing: .06em; margin: 6px 0 2px; font-size: 1.05rem; }
+  .ask output { color: var(--pink-deep); font-weight: 600; font-size: 1.3rem; }
+  input[type=range] { width: 100%; height: 44px; background: none; accent-color: var(--pink-deep); margin: 0; touch-action: pan-y; }
+  .verdict { min-height: 2.8em; margin: 4px 0 0 !important; font-style: italic; }
+
+  .count { margin: 30px auto 0; max-width: 400px; }
+  .count h3 { font-family: var(--f-caps); letter-spacing: .16em; font-weight: 500; font-size: 1.05rem; margin: 0 0 10px; color: var(--ink-soft); }
+  .units { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .unit { background: #fff; border: 1.5px solid #E5EDF9; border-radius: 16px; padding: 10px 4px 8px; }
+  .unit b { display: block; font-family: var(--f-caps); font-size: 2rem; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .unit span { font-size: .85rem; letter-spacing: .08em; font-family: var(--f-caps); color: var(--ink-soft); }
+
+  .actions { display: grid; gap: 12px; margin: 32px auto 0; max-width: 400px; }
+  .btn { display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 999px; text-decoration: none; font-family: var(--f-caps); font-weight: 600; letter-spacing: .1em; font-size: 1.1rem; padding: 0 22px; border: 2px solid var(--pink-deep); color: var(--pink-deep); background: #fff; transition: transform .15s, background .15s; }
+  .btn:active { transform: scale(.97); }
+  .btn.main { background: var(--pink-deep); color: #fff; }
+  .signoff { margin-top: 36px; }
+  .signoff p { margin: 0; font-style: italic; }
+  .signoff .sig { font-family: var(--f-script); font-size: 2.6rem; color: var(--pink); font-style: normal; line-height: 1.2; }
+
+  #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01s !important; }
+  }
+</style>
+
+</head>
+<body>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- ============ PORTADA ============ -->
+<section class="cover" id="cover" aria-label="Portada de la invitación">
+  <div class="gingham tl"></div><div class="gingham br"></div>
+  <div class="deco drift" style="top:18px;right:-24px;width:140px" data-cloud></div>
+  <div class="deco drift" style="bottom:90px;left:-30px;width:150px;animation-delay:-5s" data-cloud></div>
+  <p class="eyebrow">TIENES UNA INVITACIÓN</p>
+  <h1>Alessandra</h1>
+  <div class="balloons" id="balloons">
+    <button class="balloon b1" aria-label="Reventar globo rojo" data-color="#EB6F78"></button>
+    <button class="balloon b2" aria-label="Reventar globo rojo claro" data-color="#F28B8B"></button>
+  </div>
+  <p class="hint" id="hint" aria-live="polite">Toca los 2 globos para abrirla</p>
+  <button class="skip" id="skip">Abrir directamente</button>
+</section>
+
+<!-- ============ INVITACIÓN ============ -->
+<article class="invite" id="invite" hidden>
+  <div class="gingham tl"></div><div class="gingham br"></div>
+  <div class="deco float" style="top:70px;left:-12px;width:70px" data-balloon="#EB6F78"></div>
+  <div class="deco float" style="top:210px;right:-10px;width:66px;animation-delay:-2s" data-balloon="#F28B8B"></div>
+  <div class="deco drift" style="top:28px;right:-26px;width:130px" data-cloud></div>
+  <div class="deco drift" style="top:340px;left:-40px;width:120px;animation-delay:-6s" data-cloud></div>
+  <div class="deco drift" style="top:470px;right:-34px;width:130px;animation-delay:-9s" data-cloud></div>
+  <div class="deco twinkle" style="top:120px;right:12%;width:20px" data-spark="#F4A6B8"></div>
+  <div class="deco twinkle" style="top:300px;left:8%;width:16px;animation-delay:-1s" data-spark="#C9B8E8"></div>
+  <div class="deco twinkle" style="top:520px;right:9%;width:18px;animation-delay:-1.7s" data-spark="#A9C8EE"></div>
+  <div class="deco" style="bottom:40px;left:6%;width:44px" data-flower="#F6B3C3"></div>
+  <div class="deco" style="bottom:150px;right:5%;width:40px" data-flower="#C9B8E8"></div>
+
+  <svg class="arc" viewBox="0 0 400 70" role="img" aria-label="Vamos a celebrar">
+    <path id="arcpath" d="M20,62 Q200,-8 380,62" fill="none"/>
+    <text><textPath href="#arcpath" startOffset="50%" text-anchor="middle">¡VAMOS A CELEBRAR!</textPath></text>
+  </svg>
+  <h2 class="name">Alessandra</h2>
+
+  <div class="pair-wrap">
+    <span class="bubble l" id="bubL" aria-hidden="true">¡Guau!</span>
+    <span class="bubble r" id="bubR" aria-hidden="true">¡Guau!</span>
+    <div class="pair" id="pair" role="button" tabindex="0" aria-label="Bluey y Bingo con gorritos de fiesta. Tócalos para que ladren">
+      <img src="bluey.jpg" width="595" height="525" alt="Bluey y Bingo con gorritos de fiesta, saludando" draggable="false">
+    </div>
+  </div>
+  <p class="tap-tip">Toca a Bluey y a Bingo</p>
+
+  <p class="big-caps">¡MI CUMPLEAÑOS Nº 2!</p>
+
+  <div class="when">
+    <span class="side">Sábado</span>
+    <span class="mid"><span class="month">DICIEMBRE</span><span class="day">12</span></span>
+    <span class="side">10:00 AM</span>
+  </div>
+
+  <p class="where"><span class="venue">GOENJOY</span><span class="place">Jockey Plaza · Lima</span></p>
+
+  <section class="punctual" aria-labelledby="punt-h">
+    <h2 id="punt-h">Llega puntual</h2>
+    <p>Los juegos están abiertos solo <strong>3 horas</strong>. Llega a las 10:00 para que todos los disfruten al máximo.</p>
+  </section>
+
+  <section class="count" aria-label="Cuenta regresiva">
+    <h3 id="countTitle">FALTAN</h3>
+    <div class="units" id="units">
+      <div class="unit"><b id="cd">--</b><span>días</span></div>
+      <div class="unit"><b id="ch">--</b><span>horas</span></div>
+      <div class="unit"><b id="cm">--</b><span>min</span></div>
+      <div class="unit"><b id="cs">--</b><span>seg</span></div>
+    </div>
+  </section>
+
+  <div class="actions">
+    <a class="btn main" id="rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSeH1fy7OAWDTwzkRaaop8r_6ob8HLw3bE4IqPZ1JoO-RoFAZA/viewform" target="_blank" rel="noopener">Confirmar asistencia</a>
+    <a class="btn" id="maps" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=GoEnjoy+Jockey+Plaza+Lima">Cómo llegar</a>
+    <a class="btn" id="cal" target="_blank" rel="noopener" href="#">Agregar al calendario</a>
+  </div>
+
+  <div class="signoff">
+    <p>¡Te esperamos con mucha alegría!</p>
+    <p class="sig">Alessandra</p>
+  </div>
+</article>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Configuración ---- */
+  var EVENT_START = new Date('2026-12-12T10:00:00-05:00');
+
+  /* ---- Dibujos decorativos ---- */
+  function balloonSVG(c) {
+    return '<svg viewBox="0 0 100 172" overflow="visible" aria-hidden="true">' +
+      '<path d="M50,112 Q38,132 52,152 Q60,162 50,170" fill="none" stroke="#C9B9AF" stroke-width="1.6"/>' +
+      '<path d="M50,4 C84,4 98,36 91,64 C85,92 62,102 50,106 C38,102 15,92 9,64 C2,36 16,4 50,4Z" fill="' + c + '" stroke="rgba(120,90,110,.28)" stroke-width="1.5"/>' +
+      '<ellipse cx="34" cy="34" rx="9" ry="16" fill="#fff" opacity=".5" transform="rotate(24 34 34)"/>' +
+      '<path d="M43,105 L57,105 L50,114Z" fill="' + c + '" stroke="rgba(120,90,110,.28)" stroke-width="1.2"/></svg>';
+  }
+  function cloudSVG() {
+    return '<svg viewBox="0 0 120 70" style="width:100%;height:auto;display:block" aria-hidden="true"><path d="M20,62 Q2,62 5,45 Q8,32 23,34 Q24,15 45,15 Q58,4 72,15 Q95,9 99,32 Q118,34 115,49 Q113,62 96,62Z" fill="#F6F9FE" stroke="#DCE7F6" stroke-width="2"/></svg>';
+  }
+  function sparkSVG(c) {
+    return '<svg viewBox="0 0 20 20" style="width:100%;height:auto;display:block" aria-hidden="true"><path d="M10 0 Q11 9 20 10 Q11 11 10 20 Q9 11 0 10 Q9 9 10 0Z" fill="' + c + '"/></svg>';
+  }
+  function flowerSVG(c) {
+    var p = '';
+    for (var i = 0; i < 5; i++) {
+      var a = i * 72 - 90, x = 50 + 24 * Math.cos(a * Math.PI / 180), y = 50 + 24 * Math.sin(a * Math.PI / 180);
+      p += '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="19" fill="' + c + '" stroke="rgba(120,90,110,.2)"/>';
+    }
+    return '<svg viewBox="0 0 100 100" style="width:100%;height:auto;display:block" aria-hidden="true">' + p + '<circle cx="50" cy="50" r="11" fill="#F7DC94"/></svg>';
+  }
+  document.querySelectorAll('[data-balloon]').forEach(function (e) { e.innerHTML = balloonSVG(e.dataset.balloon); });
+  document.querySelectorAll('[data-cloud]').forEach(function (e) { e.innerHTML = cloudSVG(); });
+  document.querySelectorAll('[data-spark]').forEach(function (e) { e.innerHTML = sparkSVG(e.dataset.spark); });
+  document.querySelectorAll('[data-flower]').forEach(function (e) { e.innerHTML = flowerSVG(e.dataset.flower); });
+  document.querySelectorAll('.balloon').forEach(function (b) { b.innerHTML = balloonSVG(b.dataset.color); });
+
+  /* ---- Confeti ---- */
+  var cv = $('#confetti'), ctx = cv.getContext('2d'), parts = [], raf = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var COLORS = ['#F4A6B8', '#A9C8EE', '#C9B8E8', '#F7DC94', '#F2A872', '#FFFFFF'];
+  function fit() { cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; }
+  fit(); addEventListener('resize', fit);
+  function burst(x, y, n) {
+    if (reduce) return;
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2, s = 3 + Math.random() * 7;
+      parts.push({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 3, r: 3 + Math.random() * 4, c: COLORS[(Math.random() * COLORS.length) | 0], rot: Math.random() * 6, vr: (Math.random() - .5) * .4, life: 1, circ: Math.random() < .35 });
+    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+  function tick() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    parts = parts.filter(function (p) { return p.life > 0 && p.y < innerHeight + 30; });
+    parts.forEach(function (p) {
+      p.vy += .22; p.vx *= .985; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life -= .009;
+      ctx.save(); ctx.translate(p.x * dpr, p.y * dpr); ctx.rotate(p.rot); ctx.globalAlpha = Math.max(p.life, 0); ctx.fillStyle = p.c;
+      if (p.circ) { ctx.beginPath(); ctx.arc(0, 0, p.r * dpr * .8, 0, 6.3); ctx.fill(); } else { ctx.fillRect(-p.r * dpr, -p.r * dpr * .5, p.r * 2 * dpr, p.r * dpr); }
+      ctx.restore();
+    });
+    raf = parts.length ? requestAnimationFrame(tick) : 0;
+    if (!raf) ctx.clearRect(0, 0, cv.width, cv.height);
+  }
+
+  /* ---- Portada: reventar globos ---- */
+  var left = 2, opened = false, hint = $('#hint');
+  function openInvite() {
+    if (opened) return; opened = true;
+    $('#cover').classList.add('out');
+    setTimeout(function () {
+      $('#cover').hidden = true; $('#invite').hidden = false; window.scrollTo(0, 0);
+      burst(innerWidth * .2, innerHeight * .3, 50); burst(innerWidth * .8, innerHeight * .3, 50);
+    }, reduce ? 0 : 550);
+  }
+  document.querySelectorAll('.balloon').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (b.classList.contains('pop')) return;
+      var r = b.getBoundingClientRect();
+      b.classList.add('pop'); burst(r.left + r.width / 2, r.top + r.height * .35, 36);
+      left--;
+      hint.textContent = left > 0 ? (left === 1 ? 'Falta 1 globo' : 'Faltan ' + left + ' globos') : '¡Listo, ábrela!';
+      if (left === 0) setTimeout(openInvite, 450);
+    });
+  });
+  $('#skip').addEventListener('click', openInvite);
+
+  /* ---- Bluey y Bingo ---- */
+  var phrases = ['¡Guau!', '¡Guau guau!', '¡A jugar!', '¡Te esperamos!', '¡Feliz cumple!'];
+  (function () {
+    var el = $('#pair'), bl = $('#bubL'), br = $('#bubR'), t;
+    function go(e) {
+      var r = el.getBoundingClientRect(), x = e && e.clientX ? e.clientX : r.left + r.width / 2;
+      var bub = x < r.left + r.width / 2 ? bl : br, other = bub === bl ? br : bl;
+      el.classList.remove('jump'); void el.offsetWidth; el.classList.add('jump');
+      bub.textContent = phrases[(Math.random() * phrases.length) | 0]; bub.classList.add('show'); other.classList.remove('show');
+      burst(x, r.top + 40, 14);
+      clearTimeout(t); t = setTimeout(function () { bub.classList.remove('show'); el.classList.remove('jump'); }, 1300);
+    }
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  })();
+
+  /* ---- Cuenta regresiva ---- */
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function count() {
+    var d = EVENT_START - new Date();
+    if (d <= 0) {
+      $('#countTitle').textContent = d > -4 * 3600e3 ? '¡HOY ES EL DÍA!' : '¡GRACIAS POR VENIR!';
+      $('#cd').textContent = $('#ch').textContent = $('#cm').textContent = $('#cs').textContent = '00';
+      return;
+    }
+    var s = Math.floor(d / 1000);
+    $('#cd').textContent = Math.floor(s / 86400);
+    $('#ch').textContent = pad(Math.floor(s % 86400 / 3600));
+    $('#cm').textContent = pad(Math.floor(s % 3600 / 60));
+    $('#cs').textContent = pad(s % 60);
+  }
+  count(); setInterval(count, 1000);
+
+  /* ---- Enlaces ---- */
+  $('#cal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    '&text=' + encodeURIComponent('Cumpleaños de Alessandra (Bluey)') +
+    '&dates=20261212T100000/20261212T130000&ctz=America/Lima' +
+    '&location=' + encodeURIComponent('GoEnjoy, Jockey Plaza, Lima') +
+    '&details=' + encodeURIComponent('Llegar puntual a las 10:00 AM: los juegos están abiertos solo 3 horas.');
+})();
+</script>
+
+</body>
+</html>
